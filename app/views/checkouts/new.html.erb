@@ -3,15 +3,15 @@
     <div class="content">
 
       <header>
-        <h1>Hi, <br>Let's test a transaction</h1>
+        <h1>BT Project</h1>
         <p>
           Make a test payment with Braintree using PayPal or a card
         </p>
       </header>
 
-      <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
+      <%# form_tag("/checkouts", method: "post", id: "payment-form") do %>
         <section>
-          <div class="bt-drop-in-wrapper">
+<!--           <div class="bt-drop-in-wrapper">
             <div id="bt-dropin"></div>
           </div>
 
@@ -20,11 +20,31 @@
             <div class="input-wrapper amount-wrapper">
               <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
             </div>
-          </label>
+          </label> -->
+
+        <form action="/checkouts" id="payment-form" method="POST">
+          <label for="card-number">Card Number</label>
+          <div id="card-number"></div>
+
+          <label for="cvv">CVV</label>
+          <div id="cvv"></div>
+
+          <label for="expiration-date">Expiration Date</label>
+          <div id="expiration-date"></div>
+
+          <label for="amount">Amount</label>
+          <div id="amount"></div>
+
+          <input type="submit" value="Pay" />
+        </form>
+
+        <script src="https://js.braintreegateway.com/web/3.6.2/js/client.min.js"></script>
+        <script src="https://js.braintreegateway.com/web/3.6.2/js/hosted-fields.min.js"></script>
+
         </section>
 
         <button class="button" type="submit"><span>Test Transaction</span></button>
-      <% end %>
+      <%# end %>
 
     </div>
   </div>

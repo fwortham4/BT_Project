@@ -19,7 +19,7 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-    amount = params["amount"] # In production you should not take amounts directly from clients
+    amount = params["amount"]
     nonce = params["payment_method_nonce"]
 
     result = Braintree::Transaction.sale(
