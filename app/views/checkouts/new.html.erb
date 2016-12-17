@@ -5,7 +5,7 @@
       <header>
         <h1>BT Project</h1>
         <p>
-          Make a test payment with Braintree using PayPal or a card
+          Please provide your Credit Card information below.
         </p>
       </header>
 
@@ -23,27 +23,19 @@
           </label> -->
 
           <form action="/checkouts" id="payment-form" method="POST">
-            <label for="card-number">Card Number</label>
             <div class="form-control" id="card-number"></div>
 
-            <label for="cvv">CVV</label>
             <div class="form-control" id="cvv"></div>
 
-            <label for="expiration-date">Expiration Date</label>
             <div class="form-control" id="expiration-date"></div>
 
-            <label for="postal-code">Billing Zip Code</label>
             <div class="form-control" id="postal-code"></div>
 
-            <label for="amount">Amount</label>
             <div class="form-control" id="amount"></div>
 
             <!-- <input type="submit" value="Pay" /> -->
             <input class="button" type="submit" value="Pay"></input>
           </form>
-
-          <!-- Load the required client component. -->
-          <script src="https://js.braintreegateway.com/web/3.6.2/js/client.min.js"></script>
 
           <!-- Load Hosted Fields component. -->
           <script src="https://js.braintreegateway.com/web/3.6.2/js/hosted-fields.min.js"></script>
@@ -56,7 +48,7 @@
   </div>
 </div>
 
-<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
+<script src="https://js.braintreegateway.com/web/3.6.2/js/client.min.js"></script>
 <script>
   var form = document.querySelector('#payment-form');
   var submit = document.querySelector('input[type="submit"]');
