@@ -9,40 +9,22 @@
         </p>
       </header>
 
-      <%# form_tag("/checkouts", method: "post", id: "payment-form") do %>
         <section>
-<!--           <div class="bt-drop-in-wrapper">
-            <div id="bt-dropin"></div>
-          </div>
-
-          <label for="amount">
-            <span class="input-label">Amount</span>
-            <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-            </div>
-          </label> -->
-
           <form action="/checkouts" id="payment-form" method="POST">
+
             <div class="form-control" id="card-number"></div>
-
             <div class="form-control" id="cvv"></div>
-
             <div class="form-control" id="expiration-date"></div>
-
             <div class="form-control" id="postal-code"></div>
+            <!-- <div class="form-control" id="amount"></div> -->
 
-            <div class="form-control" id="amount"></div>
-
-            <!-- <input type="submit" value="Pay" /> -->
             <input class="button" type="submit" value="Pay"></input>
+
           </form>
 
           <!-- Load Hosted Fields component. -->
           <script src="https://js.braintreegateway.com/web/3.6.2/js/hosted-fields.min.js"></script>
-
         </section>
-
-      <%# end %>
 
     </div>
   </div>
