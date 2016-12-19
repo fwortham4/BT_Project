@@ -15,17 +15,17 @@ class CheckoutsController < ApplicationController
 
   def show
     @transaction = Braintree::Transaction.find(params[:id])
-    @result = _create_result_hash(@transaction)
+    # @result = _create_result_hash(@transaction)
   end
 
   def create
     if request.xhr?
-      amount = params["amount"]
+      amount = 25 #params["amount"]
       nonce = params["payment_method_nonce"]
 
       result = Braintree::Transaction.sale(
         amount: amount,
-        payment_method_nonce: nonce,
+        payment_method_nonce: "fake-valid-nonce",
         :options => {
           :submit_for_settlement => true
         }

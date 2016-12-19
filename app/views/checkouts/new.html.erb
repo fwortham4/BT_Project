@@ -5,8 +5,10 @@
       <header>
         <h1>BT Project</h1>
         <p>
-          Please provide your Credit Card information below.
+          Would you like to buy this :) (smiley face)?
         </p>
+        <p>Price: $25.00</p><br><br>
+        <p>Please provide your credit card information below.</p>
       </header>
 
         <section>
@@ -91,7 +93,7 @@
                   // event.preventDefault();
 
                   var $PaymentForm = $('#payment-form');
-                  var resultData = $PaymentForm.serialize;
+                  var resultData = payment_method_nonce;
                   // console.log(resultData);
 
                   $.ajax({
