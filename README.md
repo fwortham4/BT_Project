@@ -1,6 +1,6 @@
 # BT Project
 
-An example Braintree's v.zero API integration, with Hosted Fields, for a Ruby on Rails application.
+An example of Braintree's v.zero API integration, with Hosted Fields, for a Ruby on Rails application.
 
 ## Setup Instructions
 
@@ -25,9 +25,9 @@ An example Braintree's v.zero API integration, with Hosted Fields, for a Ruby on
   ```
 
 5. Use the following fake credit card number:
-```sh
-4111 1111 1111 1111
-```
+  ```sh
+  4111 1111 1111 1111
+  ```
 
 ## Disclaimer
 
