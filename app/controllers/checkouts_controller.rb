@@ -25,6 +25,8 @@ class CheckoutsController < ApplicationController
 
       result = Braintree::Transaction.sale(
         amount: amount,
+        # Uses "fake-valid-nonce" as payment-method-nonce to bypass "Error: 91508 Cannot determine payment method."
+        # See console.log output for actual corrsponding nonce.
         payment_method_nonce: "fake-valid-nonce",
         :options => {
           :submit_for_settlement => true
