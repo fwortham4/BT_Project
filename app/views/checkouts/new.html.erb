@@ -20,16 +20,6 @@
 
             <input class="button" type="submit" value="Pay"></input>
 
-          </form>
-
-          <!-- Load Hosted Fields component. -->
-          <script src="https://js.braintreegateway.com/web/3.6.2/js/hosted-fields.min.js"></script>
-        </section>
-
-    </div>
-  </div>
-</div>
-
 <script src="https://js.braintreegateway.com/web/3.6.2/js/client.min.js"></script>
 <script>
   var form = document.querySelector('#payment-form');
@@ -91,9 +81,30 @@
                 return;
               }
 
-              // If this was a real integration, this is where you would
-              // send the nonce to your server.
-              console.log('Got a nonce: ' + payload.nonce);
+              var payment_method_nonce = payload.nonce;
+              console.log('Got a nonce: ' + payment_method_nonce);
+
+              // Send the nonce to your server.
+
+              // $(document).ready(function() {
+                // $("#payment-form").on("submit", function(event) {
+                  // event.preventDefault();
+
+                  var $PaymentForm = $('#payment-form');
+                  var resultData = $PaymentForm.serialize;
+                  // console.log(resultData);
+
+                  $.ajax({
+                    method:$PaymentForm.attr('method'),
+                    url: $PaymentForm.attr('action'),
+                    data: resultData
+                  }).done( function(response){
+
+                    console.log(response);
+                  });
+                // });
+              // });
+
             });
           }, false);
         });
@@ -110,3 +121,13 @@
   //   });
   // })()
 </script>
+          </form>
+        </section>
+
+          <!-- Load Hosted Fields component. -->
+        <script src="https://js.braintreegateway.com/web/3.6.2/js/hosted-fields.min.js"></script>
+
+    </div>
+  </div>
+</div>
+
