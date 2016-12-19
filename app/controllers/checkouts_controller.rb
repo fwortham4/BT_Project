@@ -15,26 +15,32 @@ class CheckoutsController < ApplicationController
 
   def show
     @transaction = Braintree::Transaction.find(params[:id])
-    @result = _create_result_hash(@transaction)
+    # @result = _create_result_hash(@transaction)
   end
 
   def create
-    amount = params["amount"] # In production you should not take amounts directly from clients
-    nonce = params["payment_method_nonce"]
+    if request.xhr?
+      amount = 25 #params["amount"]
+      nonce = params["payment_method_nonce"]
 
-    result = Braintree::Transaction.sale(
-      amount: amount,
-      payment_method_nonce: nonce,
-      :options => {
-        :submit_for_settlement => true
-      }
-    )
+      result = Braintree::Transaction.sale(
+        amount: amount,
+        # Uses "fake-valid-nonce" as payment-method-nonce to bypass "Error: 91508 Cannot determine payment method."
+        # See console.log output for actual corrsponding nonce.
+        payment_method_nonce: "fake-valid-nonce",
+        :options => {
+          :submit_for_settlement => true
+        }
+      )
 
-    if result.success? || result.transaction
-      redirect_to checkout_path(result.transaction.id)
+      if result.success? || result.transaction
+        redirect_to checkout_path(result.transaction.id)
+      else
+        error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
+        flash[:error] = error_messages
+        redirect_to new_checkout_path
+      end
     else
-      error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
-      flash[:error] = error_messages
       redirect_to new_checkout_path
     end
   end
